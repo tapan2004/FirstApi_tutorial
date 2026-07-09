@@ -6,6 +6,12 @@ app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
 
+def init_db():
+    db = SessionLocal()
+    for product in products:
+        db.add(product)
+    
+
 @app.get("/")
 def fun():
     return "Hello, World!"
